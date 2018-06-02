@@ -48,6 +48,9 @@ namespace FixMaxPrioritySalvage
     {
         public static void Postfix(Briefing __instance, Contract contract, SimGameState Sim)
         {
+            if (Sim == null || contract.ContractType == ContractType.ArenaSkirmish)
+                return;
+
             var actualSalvage = contract.SalvagePotential;
             if (actualSalvage > 0)
             {
